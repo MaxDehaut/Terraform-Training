@@ -1,0 +1,4 @@
+On Computable Numbers with an application to the entscheidungsproblem
+
+The computable numbers may be described briefly as the real numbers 
+whose expressions as a decimal are calculable by finite means.
