@@ -1,0 +1,5 @@
+{
+    "operating_system": "${os[0]}",
+    "cpu_config": "${cpu[0]}",
+    "ram_config": ${ram_size[0]}
+}
