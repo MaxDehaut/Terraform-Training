@@ -4,8 +4,8 @@ terraform {
         random= {
             source= "hashicorp/random"
             version = "~> 3.0"
-      }
-  }
+        }
+    }
 }
 
 variable "svr_configs" {
@@ -36,9 +36,10 @@ resource "random_shuffle" "random_ram_size"{
 
 output "out_cfg" {
     value = templatefile("${path.module}/templates/typical_svr.json",
-    {
-        os          = random_shuffle.random_os.result
-        cpu         = random_shuffle.random_cpu.result
-        ram_size    = random_shuffle.random_ram_size.result
-    })
+        {
+            os          = random_shuffle.random_os.result
+            cpu         = random_shuffle.random_cpu.result
+            ram_size    = random_shuffle.random_ram_size.result
+        }
+    )
 }
