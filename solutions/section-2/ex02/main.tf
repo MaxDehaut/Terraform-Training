@@ -12,11 +12,11 @@ provider "azurerm" {
 }
 
 # Resource Group
-resource "azurerm_resource_group" "___________" {
-  name     = "___________"
-  location = "___________"
+resource "azurerm_resource_group" "rgtf" {
+  name     = "rgTerraform"
+  location = "West Europe"
 
   tags = {
-    "___________" = "___________"
+    "environment" = "Training"
   }
 }

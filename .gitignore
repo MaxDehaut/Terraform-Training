@@ -1,3 +1,6 @@
+# Local temp files
+**/temp/*
+
 # Local .terraform directories
 **/.terraform/*
 

@@ -1,0 +1,98 @@
+{
+    "format_version": "0.2",
+    "terraform_version": "1.0.3",
+    "planned_values": {
+        "root_module": {
+            "resources": [
+                {
+                    "address": "azurerm_resource_group.rgtf",
+                    "mode": "managed",
+                    "type": "azurerm_resource_group",
+                    "name": "rgtf",
+                    "provider_name": "registry.terraform.io/hashicorp/azurerm",
+                    "schema_version": 0,
+                    "values": {
+                        "location": "westeurope",
+                        "name": "rgTerraform",
+                        "tags": {
+                            "environment": "Training"
+                        },
+                        "timeouts": null
+                    },
+                    "sensitive_values": {
+                        "tags": {}
+                    }
+                }
+            ]
+        }
+    },
+    "resource_changes": [
+        {
+            "address": "azurerm_resource_group.rgtf",
+            "mode": "managed",
+            "type": "azurerm_resource_group",
+            "name": "rgtf",
+            "provider_name": "registry.terraform.io/hashicorp/azurerm",
+            "change": {
+                "actions": [
+                    "create"
+                ],
+                "before": null,
+                "after": {
+                    "location": "westeurope",
+                    "name": "rgTerraform",
+                    "tags": {
+                        "environment": "Training"
+                    },
+                    "timeouts": null
+                },
+                "after_unknown": {
+                    "id": true,
+                    "tags": {}
+                },
+                "before_sensitive": false,
+                "after_sensitive": {
+                    "tags": {}
+                }
+            }
+        }
+    ],
+    "configuration": {
+        "provider_config": {
+            "azurerm": {
+                "name": "azurerm",
+                "version_constraint": "~\u003e 2.0",
+                "expressions": {
+                    "features": [
+                        {}
+                    ]
+                }
+            }
+        },
+        "root_module": {
+            "resources": [
+                {
+                    "address": "azurerm_resource_group.rgtf",
+                    "mode": "managed",
+                    "type": "azurerm_resource_group",
+                    "name": "rgtf",
+                    "provider_config_key": "azurerm",
+                    "expressions": {
+                        "location": {
+                            "constant_value": "West Europe"
+                        },
+                        "name": {
+                            "constant_value": "rgTerraform"
+                        },
+                        "tags": {
+                            "constant_value": {
+                                "environment": "Training"
+                            }
+                        }
+                    },
+                    "schema_version": 0
+                }
+            ]
+        }
+    }
+}
