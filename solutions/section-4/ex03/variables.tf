@@ -1,7 +1,7 @@
 variable "costalloc" {
   type        = string
   description = "The cost allocation used for all resources in this exercise"
-  default     = "training"
+  default     = "it-hq"
 }
 
 variable "location" {
@@ -13,5 +13,5 @@ variable "location" {
 variable "suffix" {
   type        = string
   description = "The suffix used to name all resources in this exercise"
-  default     = "West Europe"
+  default     = "training"
 }
