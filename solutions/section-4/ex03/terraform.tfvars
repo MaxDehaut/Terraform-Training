@@ -1,3 +1,3 @@
-location = "West Europe"
-suffix   = "tftraining"
+location  = "West Europe"
+suffix    = "tftraining"
 costalloc = "it-hq"
