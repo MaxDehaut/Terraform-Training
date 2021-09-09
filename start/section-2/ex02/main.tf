@@ -9,6 +9,9 @@ terraform {
 
 provider "azurerm" {
     features {}
+
+#    subscription_id = "___________" # Optional if only one
+#    tenant_id = ""
 }
 
 # Resource Group
