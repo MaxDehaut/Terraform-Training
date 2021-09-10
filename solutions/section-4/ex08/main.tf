@@ -1,13 +1,3 @@
-module "tweetish" {
-  source  = "MaxDehaut/azure/tweetish"
-  version = "1.0.0"
-}
-# Random String (name for storage account to avoid "already exists" message)
-resource "random_string" "rand" {
-  length  = 24
-  special = false
-  upper   = false
-}
 # Resource Group
 resource "azurerm_resource_group" "training" {
   name     = "rg-${var.suffix}"
@@ -17,6 +7,12 @@ resource "azurerm_resource_group" "training" {
     "environment" = "training"
     "costalloc"   = "${var.costalloc}"
   }
+}
+# Random String (name for storage account to avoid "already exists" message)
+resource "random_string" "rand" {
+  length  = 24
+  special = false
+  upper   = false
 }
 # Storage Account
 resource "azurerm_storage_account" "training" {
@@ -31,6 +27,11 @@ resource "azurerm_storage_container" "training" {
   name                  = "sc${var.suffix}"
   storage_account_name  = azurerm_storage_account.training.name
   container_access_type = "private"
+}
+# Module
+module "tweetish" {
+  source  = "MaxDehaut/azure/tweetish"
+  version = "1.0.0"
 }
 # Storage Blob
 resource "azurerm_storage_blob" "training" {
@@ -75,6 +76,13 @@ data "azurerm_storage_account_sas" "training" {
 locals {
   package_url = "https://${azurerm_storage_account.training.name}.blob.core.windows.net/${azurerm_storage_container.training.name}/${azurerm_storage_blob.training.name}${data.azurerm_storage_account_sas.training.sas}"
 }
+# Application Insights
+resource "azurerm_application_insights" "training" {
+  name                = "api-${var.suffix}"
+  location            = azurerm_resource_group.training.location
+  resource_group_name = azurerm_resource_group.training.name
+  application_type    = "web"
+}
 # App Service Plan
 resource "azurerm_app_service_plan" "training" {
   name                = "apl-${var.suffix}"
@@ -86,13 +94,6 @@ resource "azurerm_app_service_plan" "training" {
     tier = "Dynamic"
     size = "Y1"
   }
-}
-# Application Insights
-resource "azurerm_application_insights" "training" {
-  name                = "api-${var.suffix}"
-  location            = azurerm_resource_group.training.location
-  resource_group_name = azurerm_resource_group.training.name
-  application_type    = "web"
 }
 # Function App
 resource "azurerm_function_app" "training" {
