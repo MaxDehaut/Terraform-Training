@@ -2,22 +2,41 @@
 
 ## Step 1 - Using Powershell to connect
 
-- Login to Az using Powershell command: Connect-AzAccount
+- Login to Az using Powershell or az cli - Connect-AzAccount
 
-## Step 2 - Configure Terraform backend state
+## Step 2 - Create a script to create the backend
 
-- Define parameters / Set a value to parameters
+- **ONLY FOR THE BRAVES**: using powershell:
+  - Create a resource group
+  - Create a storage account
+  - Create a storage container
+  - Collect the storage account key
+
+- or Run a script: config-backend-state.ps1
+
+## Step 3 - Configure Terraform backend state
+
+- Create a main.tf file with the standard "terraform" and azurerm provider elements
+- Declare a "backend" element within "terraform" element with the following attributes:
+  - resource_group_name: the resource group
   - storage_account_name: The name of the Azure Storage account.
   - container_name: The name of the blob container.
   - key: The name of the state store file to be created.
 
-  - access_key: The storage access key.
+- Set the values based on the output of the powershell script
 
-- Note: Each of these values can be specified in the Terraform configuration file or on the command line. We recommend that you use an environment variable for the access_key value. Using an environment variable prevents the key from being written to disk.
+## Step 4 - Execute the main.tf
 
-- Run ps script: config-backend-state.ps1
-- 
+- Add a resource group
 
-LINKS:
-https://www.terraform.io/docs/language/settings/backends/configuration.html
-https://docs.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage?tabs=powershell
+## Step 5 - Execute the main.tf
+
+- Once the plan has been generated, perform a "terraform state pull"
+- Once "apply" has been done, go and check on Azure Portal the file has been created
+- !!! Don't forget to destroy !!!
+
+---
+
+Note: Each of these values can be specified in the Terraform configuration file or on the command line. We recommend that you use an environment variable for the access_key value. Using an environment variable prevents the key from being written to disk.
+
+---

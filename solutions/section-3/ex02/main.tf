@@ -1,45 +1,49 @@
 terraform {
-    required_version = ">= 0.15"
-    required_providers {
-        random= {
-            source= "hashicorp/random"
-            version = "~> 3.0"
-        }
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~>2.0"
     }
+  }
 }
 
-variable "svr_configs" {
-    description = "A list of server config"
-    type = object ({
-        os   = list(string),
-        cpu   = list(string),
-        ram_size  = list(number),
-    })
+provider "azurerm" {
+  features {}
 
-    validation {
-        condition     = length(var.svr_configs["ram_size"]) >= 5
-        error_message = "A minimum of ram sizes is required."
-    }
+  subscription_id = "3a4e6b0d-b00a-4d29-80ef-b39739928325"
 }
 
-resource "random_shuffle" "random_os"{
-    input = var.svr_configs["os"]
+variable "appname" {
+  description = "The name of the application"
+  default     = "sec3"
+}
+variable "environment" {
+  description = "The name of the environment"
+  default     = "training"
+}
+variable "countrycode" {
+  description = "The country code"
+  default     = "LU"
+}
+variable "location" {
+  description = "The name of the Azure location"
+  default     = "West Europe"
+  validation {
+    condition     = can(index(["westeurope", "westus"], var.location) >= 0)
+    error_message = "The location must be westeurope or westus."
+  }
 }
 
-resource "random_shuffle" "random_cpu"{
-    input = var.svr_configs["cpu"]
+locals {
+  resource_name = "${var.appname}-${var.environment}-${var.countrycode}"
 }
 
-resource "random_shuffle" "random_ram_size"{
-    input = var.svr_configs["ram_size"]
-}
+# Resource Group
+resource "azurerm_resource_group" "rgtf" {
+  name     = "rg-${local.resource_name}"
+  location = "${var.location}"
 
-output "out_cfg" {
-    value = templatefile("${path.module}/templates/typical_svr.json",
-        {
-            os          = random_shuffle.random_os.result
-            cpu         = random_shuffle.random_cpu.result
-            ram_size    = random_shuffle.random_ram_size.result
-        }
-    )
+  tags = {
+    "environment" = "Training"
+  }
 }

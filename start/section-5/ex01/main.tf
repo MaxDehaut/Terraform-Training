@@ -11,9 +11,10 @@ terraform {
 
   }
 
+  # Service Principal
   backend "azurerm" {
     resource_group_name  = "rgTfTraining"
-    storage_account_name = "satftraining1941223475"
+    storage_account_name = "satftraining1699639755"
     container_name       = "sctftraining"
     key                  = "terraform.tfstate"
   }
@@ -22,4 +23,14 @@ terraform {
 
 provider "azurerm" {
   features {}
+}
+
+# Resource Group
+resource "azurerm_resource_group" "rgtf" {
+  name     = "rgTerraform"
+  location = "West Europe"
+
+  tags = {
+    "environment" = "Training"
+  }
 }

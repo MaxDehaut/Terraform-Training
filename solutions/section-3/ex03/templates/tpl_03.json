@@ -1,5 +1,0 @@
-{
-    "system": "${os[0]}",
-    "compute": "${cpu[0]}",
-    "memory": "${ram_size[0]}"
-}
