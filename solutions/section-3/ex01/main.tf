@@ -15,27 +15,23 @@ provider "azurerm" {
 
 variable "appname" {
   description ="The name of the application"
-  default = "sec3"
+  default = "tfTraining"
 }
 variable "environment" {
   description ="The name of the environment"
-  default = "training"
+  default = "dev"
 }
-variable "countrycode" {
-  description ="The country code"
-  default = "LU"
+variable "location" {
+  description = "The name of the Azure location"
+  default     = "West Europe"
 }
 
 locals {
-  resource_name = "${var.appname}-${var.environment}-${var.countrycode}"
+  resource_name = "${var.appname}-${var.environment}"
 }
 
 # Resource Group
 resource "azurerm_resource_group" "rgtf" {
   name     = "rg-${local.resource_name}"
   location = "West Europe"
-
-  tags = {
-    "environment" = "Training"
-  }
 }

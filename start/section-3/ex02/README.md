@@ -3,8 +3,6 @@
 ## Step 1 - Prepare the environment
 
 - Collect the solution file from exercise 3.01
-- Add 1 variables to store:
-  - The location with a default value of "West Europe"
 
 ## Step 2 - Create a validation rule
 

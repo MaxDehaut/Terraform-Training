@@ -5,13 +5,13 @@
 - Collect the solution file from exercise 2.04
 - Add 3 variables to store:
   - The application name
-  - The environement
-  - The country code
+  - The environment
+  - The location (region)
 
 ## Step 2 - Create a local resource name
 
 - Create a structure/element "locals"
-- Add an attribute "resource_name" which will concatenate the 3 variables declared previously
+- Add an attribute "resource_name" which will concatenate the first 2 variables declared previously
 
 ## Step 3 - Update the resource group
 

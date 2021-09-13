@@ -9,25 +9,19 @@ terraform {
 
 provider "azurerm" {
   features {}
-
-  subscription_id = "3a4e6b0d-b00a-4d29-80ef-b39739928325"
 }
 
 variable "appname" {
   description = "The name of the application"
-  default     = "sec3"
+  default     = "tfTraining"
 }
 variable "environment" {
   description = "The name of the environment"
-  default     = "training"
-}
-variable "countrycode" {
-  description = "The country code"
-  default     = "LU"
+  default     = "dev"
 }
 variable "location" {
   description = "The name of the Azure location"
-  default     = "West Europe"
+  default     = "westeurope"
   validation {
     condition     = can(index(["westeurope", "westus"], var.location) >= 0)
     error_message = "The location must be westeurope or westus."
@@ -35,15 +29,11 @@ variable "location" {
 }
 
 locals {
-  resource_name = "${var.appname}-${var.environment}-${var.countrycode}"
+  resource_name = "${var.appname}-${var.environment}"
 }
 
 # Resource Group
 resource "azurerm_resource_group" "rgtf" {
   name     = "rg-${local.resource_name}"
   location = "${var.location}"
-
-  tags = {
-    "environment" = "Training"
-  }
 }

@@ -6,7 +6,7 @@
 
 ## Step 2 - Create a script to create the backend
 
-- **ONLY FOR THE BRAVES**: using powershell:
+- **ONLY FOR THE BRAVES**: starting from only-the-brave.ps1:
   - Create a resource group
   - Create a storage account
   - Create a storage container
