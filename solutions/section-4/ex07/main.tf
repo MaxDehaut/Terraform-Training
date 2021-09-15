@@ -13,15 +13,17 @@ resource "azurerm_resource_group" "training" {
 module "networking" {
   source = "./modules/networking"
 
-  rg     = azurerm_resource_group.training
-  suffix = var.suffix
+  rg       = azurerm_resource_group.training
+  suffix   = var.suffix
+  vm_names = var.vm_names
 }
 
 # Module Application
 module "application" {
   source = "./modules/application"
 
-  nic_id = module.networking.nic_id
-  rg     = azurerm_resource_group.training
-  suffix = var.suffix
+  nic      = module.networking.nic
+  rg       = azurerm_resource_group.training
+  suffix   = var.suffix
+  vm_names = var.vm_names
 }

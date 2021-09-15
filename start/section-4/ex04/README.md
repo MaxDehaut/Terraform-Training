@@ -9,3 +9,9 @@
 - [Ms SQL Server](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/sql_server)
 
 ## Last step - Execute the deployment
+
+## BONUS
+
+- The additional resources should be based on
+  - [Storage account](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account)
+  - [Ms SQL Database](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_database)

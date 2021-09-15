@@ -18,7 +18,7 @@ terraform {
     container_name       = "sctftraining"
     key                  = "terraform.tfstate"
   }
-
+  
 }
 
 variable "location" {

@@ -15,3 +15,9 @@ variable "suffix" {
   description = "The suffix used to name all resources in this exercise"
   default     = "training"
 }
+
+variable "vm_names" {
+  type        = list(string)
+  description = "List of virtual machine names"
+  default     = ["vmKepler", "vmNewton"]
+}
