@@ -1,0 +1,26 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  - master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: TerraformInstaller@0
+  inputs:
+    terraformVersion: '0.12.3'
+
+- task: TerraformTaskV2@2
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'PXL CADAI Subscription(3a4e6b0d-b00a-4d29-80ef-b39739928325)'
+    backendAzureRmResourceGroupName: 'rgDevOps'
+    backendAzureRmStorageAccountName: 'sadevops1697890517'
+    backendAzureRmContainerName: 'scdevops'
+    backendAzureRmKey: 'terraform.tfstate'
+    

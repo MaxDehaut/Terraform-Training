@@ -1,0 +1,87 @@
+{
+    "format_version": "0.2",
+    "terraform_version": "1.0.6",
+    "planned_values": {
+        "root_module": {
+            "resources": [
+                {
+                    "address": "local_file.Britney",
+                    "mode": "managed",
+                    "type": "local_file",
+                    "name": "Britney",
+                    "provider_name": "registry.terraform.io/hashicorp/local",
+                    "schema_version": 0,
+                    "values": {
+                        "content": "'Cause to lose all my senses\n\nThat is just so typically me \nYou see, my problem is this, I'm dreaming away\nCan't you see I'm a fool in so many ways?\n",
+                        "content_base64": null,
+                        "directory_permission": "0777",
+                        "file_permission": "0777",
+                        "filename": "I_did_it_again.txt",
+                        "sensitive_content": null,
+                        "source": null
+                    },
+                    "sensitive_values": {}
+                }
+            ]
+        }
+    },
+    "resource_changes": [
+        {
+            "address": "local_file.Britney",
+            "mode": "managed",
+            "type": "local_file",
+            "name": "Britney",
+            "provider_name": "registry.terraform.io/hashicorp/local",
+            "change": {
+                "actions": [
+                    "create"
+                ],
+                "before": null,
+                "after": {
+                    "content": "'Cause to lose all my senses\n\nThat is just so typically me \nYou see, my problem is this, I'm dreaming away\nCan't you see I'm a fool in so many ways?\n",
+                    "content_base64": null,
+                    "directory_permission": "0777",
+                    "file_permission": "0777",
+                    "filename": "I_did_it_again.txt",
+                    "sensitive_content": null,
+                    "source": null
+                },
+                "after_unknown": {
+                    "id": true
+                },
+                "before_sensitive": false,
+                "after_sensitive": {
+                    "sensitive_content": true
+                }
+            }
+        }
+    ],
+    "configuration": {
+        "provider_config": {
+            "local": {
+                "name": "local",
+                "version_constraint": "~\u003e 2.0"
+            }
+        },
+        "root_module": {
+            "resources": [
+                {
+                    "address": "local_file.Britney",
+                    "mode": "managed",
+                    "type": "local_file",
+                    "name": "Britney",
+                    "provider_config_key": "local",
+                    "expressions": {
+                        "content": {
+                            "constant_value": "'Cause to lose all my senses\n\nThat is just so typically me \nYou see, my problem is this, I'm dreaming away\nCan't you see I'm a fool in so many ways?\n"
+                        },
+                        "filename": {
+                            "constant_value": "I_did_it_again.txt"
+                        }
+                    },
+                    "schema_version": 0
+                }
+            ]
+        }
+    }
+}
